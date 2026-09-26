@@ -1,5 +1,5 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Event from '../components/Event.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -12,6 +12,12 @@ import Layout from '../layouts/Layout.astro';
 			<h1>Friday Night STEM</h1>
 		</header>
 		<p>Hello, world! This could be a cool spot to put a mission statement or a quick overview of what Friday Night STEM is and where and when it meets.</p>
+
+		<section>
+			<h2>Upcoming Events</h2>
+			<Event title="Event 1" timestampSec={1790444637} presenter="John Doe" description="John will talk about the amazing science behind neutron stars." />
+			<Event title="Event 2" timestampSec={1790449958} presenter="John Doe" description="John will talk about the amazing science behind neutron stars." />
+		</section>
 	</main>
 </Layout>
 

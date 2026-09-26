@@ -1,0 +1,37 @@
+---
+const { timestampSec } = Astro.props;
+
+interface Props {
+	timestampSec: number;
+}
+
+const isoString = new Date(timestampSec * 1000).toISOString();
+---
+
+<local-time datetime={isoString}>
+	{/* this is what will be rendered if JavaScript is disabled */}
+  <time datetime={isoString}></time>
+</local-time>
+
+<script>
+	class LocalTime extends HTMLElement {
+		connectedCallback() {
+			const iso = this.getAttribute('datetime');
+			if (!iso) return;
+
+			const formatted = new Intl.DateTimeFormat(undefined, {
+				year: 'numeric',
+				weekday: 'short',
+				month: 'short',
+				day: 'numeric',
+				hour: 'numeric',
+				minute: '2-digit',
+				hour12: true,
+			}).format(new Date(iso));
+
+			this.innerHTML = `<time datetime="${iso}">${formatted}</time>`;
+		}
+	}
+
+	customElements.define('local-time', LocalTime);
+</script>

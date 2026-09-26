@@ -1,0 +1,19 @@
+---
+import LocalTime from './LocalTime.astro';
+
+interface Props {
+	title: string;
+	timestampSec: number;
+	presenter: string;
+	description: string;
+}
+
+const { title, timestampSec, presenter, description } = Astro.props
+---
+
+<article>
+	<h3>{title}</h3>
+	<LocalTime {timestampSec} />
+	<p>Presented by {presenter}</p>
+	<p>{description}</p>
+</article>
